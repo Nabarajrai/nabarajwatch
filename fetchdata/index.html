@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .items .img{
+            width: 300px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 300px;
+        }
+        .items{
+            display: flex;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+        }
+        .items.item{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    </style>
+</head>
+<body>
+    <h2>helllow</h2>
+    <div></div>
+
+    <script>
+        const div=document.querySelector('div');
+        fetch("https://yts.mx/api/v2/list_movies.json")
+        .then(response=>response.json())
+      
+        .then(data=>{
+           console.log(data);
+            const name=data.data.movies;
+            
+            const fillHtml=name.map((mv,i)=>{
+               return `
+               <ul class="items" data-id="${i}">
+               <img class="img" src="${mv.background_image}" alt="">
+                <li class="item">${mv.title}</li>
+                <p>
+               </ul>
+               `
+            })
+            div.innerHTML=fillHtml;
+
+        })
+
+    </script>
+</body>
+</html>

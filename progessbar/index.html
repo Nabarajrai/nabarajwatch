@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body{
+            padding: 30px;
+            background-color: #EFEFEF;
+        }
+        .content{
+            background-color: #FFF;
+            padding: 50px;
+            font-size: 20px;
+            line-height: 1.5;
+            height: 3000px;
+        }
+        .scrollline{
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1CE;
+            height: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="scrollline"></div>
+    <div class="container">
+        <div class="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio eos illum enim hic. Modi maiores minus, est illo tenetur odio, iste quidem natus quibusdam 
+            voluptatem deserunt ullam nulla dolores voluptates!
+        </div>
+    </div>
+
+    <script>
+        const scrolllines=document.querySelector('.scrollline');
+        function fillScroll(){
+            const windowHeight=window.innerHeight;
+            const fullHeight=document.body.clientHeight;
+            const scrolled=window.scrollY;
+            const percentScrolled=(scrolled/(fullHeight-windowHeight))*100;
+            scrolllines.style.width=`${percentScrolled}%`
+            console.count('hellow');
+
+
+        }
+
+        window.addEventListener('scroll',debounce( fillScroll));
+
+
+        function debounce(func, wait, immediate) {
+  var timeout;
+
+  
+  return function executedFunction() {
+   
+    var context = this;
+    var args = arguments;
+	    
+    
+    var later = function() {
+     
+      timeout = null;
+	    
+    
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+	
+    
+    clearTimeout(timeout);
+	
+  
+    timeout = setTimeout(later, wait);
+	
+   
+    if (callNow) func.apply(context, args);
+  };
+};
+
+    </script>
+</body>
+</html>

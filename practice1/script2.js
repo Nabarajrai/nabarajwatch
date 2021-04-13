@@ -1,0 +1,2 @@
+nabarajGreeting.sayHello();
+punkyGreeting.sayHi();
